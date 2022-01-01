@@ -24,6 +24,7 @@ type Interface interface {
 	AccessControl() *AccessControl
 	Acsrf() *Acsrf
 	AjaxSpider() *AjaxSpider
+	Alert() *Alert
 	AlertFilter() *AlertFilter
 	Ascan() *Ascan
 	Authentication() *Authentication
@@ -43,6 +44,7 @@ type Interface interface {
 	Pnh() *Pnh
 	Pscan() *Pscan
 	Replacer() *Replacer
+	Reports() *Reports
 	Reveal() *Reveal
 	Revisit() *Revisit
 	Script() *Script
@@ -69,6 +71,11 @@ func (c *Client) Acsrf() *Acsrf {
 // AjaxSpider() returns a AjaxSpider client
 func (c *Client) AjaxSpider() *AjaxSpider {
 	return &AjaxSpider{c}
+}
+
+// Alert() returns a Alert client
+func (c *Client) Alert() *Alert {
+	return &Alert{c}
 }
 
 // AlertFilter() returns a AlertFilter client
@@ -164,6 +171,11 @@ func (c *Client) Pscan() *Pscan {
 // Replacer() returns a Replacer client
 func (c *Client) Replacer() *Replacer {
 	return &Replacer{c}
+}
+
+// Reports() returns a Reports client
+func (c *Client) Reports() *Reports {
+	return &Reports{c}
 }
 
 // Reveal() returns a Reveal client
