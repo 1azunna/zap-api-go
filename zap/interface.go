@@ -24,6 +24,7 @@ type Interface interface {
 	AccessControl() *AccessControl
 	Acsrf() *Acsrf
 	AjaxSpider() *AjaxSpider
+	Alert() *Alert
 	AlertFilter() *AlertFilter
 	Ascan() *Ascan
 	Authentication() *Authentication
@@ -70,6 +71,11 @@ func (c *Client) Acsrf() *Acsrf {
 // AjaxSpider() returns a AjaxSpider client
 func (c *Client) AjaxSpider() *AjaxSpider {
 	return &AjaxSpider{c}
+}
+
+// Alert() returns a Alert client
+func (c *Client) Alert() *Alert {
+	return &Alert{c}
 }
 
 // AlertFilter() returns a AlertFilter client
