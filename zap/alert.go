@@ -114,7 +114,7 @@ func (a Alert) UpdateAlert(id string, name string, riskid string, confidenceid s
 }
 
 //  Add an alert associated with the given message ID, with the provided details. (The ID of the created alert is returned.)
-func (a Alert) AddAlert(messagid string, name string, riskid string, confidenceid string, description string,
+func (a Alert) AddAlert(messageid string, name string, riskid string, confidenceid string, description string,
 	param string, attack string, otherinfo string, solution string, references string, evidence string, cweid string, wascid string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"messageId":    messageid,
