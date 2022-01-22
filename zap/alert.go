@@ -77,7 +77,7 @@ func (a Alert) DeleteAlert(id string) (map[string]interface{}, error) {
 // Update the confidence of the alerts.
 func (a Alert) UpdateAlertsConfidence(ids []string, confidenceid string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"ids":           strings.Join(ids, ","),
+		"ids":          strings.Join(ids, ","),
 		"confidenceId": confidenceid,
 	}
 	return a.c.Request("alert/action/updateAlertsConfidence/", m)
@@ -86,7 +86,7 @@ func (a Alert) UpdateAlertsConfidence(ids []string, confidenceid string) (map[st
 // Update the risk of the alerts.
 func (a Alert) UpdateAlertsRisk(ids []string, riskid string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"ids":    strings.Join(ids, ",")
+		"ids":    strings.Join(ids, ","),
 		"riskId": riskid,
 	}
 	return a.c.Request("alert/action/updateAlertsRisk/", m)
