@@ -39,6 +39,7 @@ type Interface interface {
 	HttpSessions() *HttpSessions
 	ImportLogFiles() *ImportLogFiles
 	Importurls() *Importurls
+	LocalProxies() *LocalProxies
 	Openapi() *Openapi
 	Params() *Params
 	Pnh() *Pnh
@@ -47,6 +48,7 @@ type Interface interface {
 	Reports() *Reports
 	Reveal() *Reveal
 	Revisit() *Revisit
+	RuleConfig() *RuleConfig
 	Script() *Script
 	Search() *Search
 	Selenium() *Selenium
@@ -148,6 +150,11 @@ func (c *Client) Importurls() *Importurls {
 	return &Importurls{c}
 }
 
+// LocalProxies() returns a LocalProxies client
+func (c *Client) LocalProxies() *LocalProxies {
+	return &LocalProxies{c}
+}
+
 // Openapi() returns a Openapi clinet
 func (c *Client) Openapi() *Openapi {
 	return &Openapi{c}
@@ -186,6 +193,11 @@ func (c *Client) Reveal() *Reveal {
 // Revisit() returns a Revisit client
 func (c *Client) Revisit() *Revisit {
 	return &Revisit{c}
+}
+
+// RuleConfig() returns a RuleConfig client
+func (c *Client) RuleConfig() *RuleConfig {
+	return &RuleConfig{c}
 }
 
 // Script() returns a Script client

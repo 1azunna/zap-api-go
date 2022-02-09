@@ -40,6 +40,16 @@ func (p Pscan) Scanners() (map[string]interface{}, error) {
 	return p.c.Request("pscan/view/scanners/", nil)
 }
 
+// Show information about the passive scan rule currently being run (if any).
+func (p Pscan) CurrentRule() (map[string]interface{}, error) {
+	return p.c.Request("pscan/view/currentRule/", nil)
+}
+
+// Gets the maximum number of alerts a passive scan rule should raise.
+func (p Pscan) MaxAlertsPerRule() (map[string]interface{}, error) {
+	return p.c.Request("pscan/view/maxAlertsPerRule/", nil)
+}
+
 // Sets whether or not the passive scanning is enabled (Note: the enabled state is not persisted).
 func (p Pscan) SetEnabled(enabled string) (map[string]interface{}, error) {
 	m := map[string]string{
@@ -85,8 +95,27 @@ func (p Pscan) DisableScanners(ids string) (map[string]interface{}, error) {
 // Sets the alert threshold of the passive scanner with the given ID, accepted values for alert threshold: OFF, DEFAULT, LOW, MEDIUM and HIGH
 func (p Pscan) SetScannerAlertThreshold(id string, alertthreshold string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"id":             id,
+		"id": id,
 		"alertThreshold": alertthreshold,
 	}
 	return p.c.Request("pscan/action/setScannerAlertThreshold/", m)
 }
+
+// Sets the maximum number of alerts a passive scan rule should raise.
+func (p Pscan) SetMaxAlertsPerRule(maxalerts string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"maxAlerts": maxalerts,
+	}
+	return p.c.Request("pscan/action/setMaxAlertsPerRule/", m)
+}
+
+// Disables all passive scan tags.
+func (p Pscan) DisableAllTags() (map[string]interface{}, error) {
+	return p.c.Request("pscan/action/disableAllTags/", nil)
+}
+
+// Enables all passive scan tags.
+func (p Pscan) EnableAllTags() (map[string]interface{}, error) {
+	return p.c.Request("pscan/action/enableAllTags/", nil)
+}
+

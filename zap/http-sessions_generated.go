@@ -33,7 +33,7 @@ func (h HttpSessions) Sites() (map[string]interface{}, error) {
 // Gets the sessions for the given site. Optionally returning just the session with the given name.
 func (h HttpSessions) Sessions(site string, session string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site":    site,
+		"site": site,
 		"session": session,
 	}
 	return h.c.Request("httpSessions/view/sessions/", m)
@@ -55,10 +55,15 @@ func (h HttpSessions) SessionTokens(site string) (map[string]interface{}, error)
 	return h.c.Request("httpSessions/view/sessionTokens/", m)
 }
 
+// Gets the default session tokens.
+func (h HttpSessions) DefaultSessionTokens() (map[string]interface{}, error) {
+	return h.c.Request("httpSessions/view/defaultSessionTokens/", nil)
+}
+
 // Creates an empty session for the given site. Optionally with the given name.
 func (h HttpSessions) CreateEmptySession(site string, session string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site":    site,
+		"site": site,
 		"session": session,
 	}
 	return h.c.Request("httpSessions/action/createEmptySession/", m)
@@ -67,7 +72,7 @@ func (h HttpSessions) CreateEmptySession(site string, session string) (map[strin
 // Removes the session from the given site.
 func (h HttpSessions) RemoveSession(site string, session string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site":    site,
+		"site": site,
 		"session": session,
 	}
 	return h.c.Request("httpSessions/action/removeSession/", m)
@@ -76,7 +81,7 @@ func (h HttpSessions) RemoveSession(site string, session string) (map[string]int
 // Sets the given session as active for the given site.
 func (h HttpSessions) SetActiveSession(site string, session string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site":    site,
+		"site": site,
 		"session": session,
 	}
 	return h.c.Request("httpSessions/action/setActiveSession/", m)
@@ -93,7 +98,7 @@ func (h HttpSessions) UnsetActiveSession(site string) (map[string]interface{}, e
 // Adds the session token to the given site.
 func (h HttpSessions) AddSessionToken(site string, sessiontoken string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site":         site,
+		"site": site,
 		"sessionToken": sessiontoken,
 	}
 	return h.c.Request("httpSessions/action/addSessionToken/", m)
@@ -102,7 +107,7 @@ func (h HttpSessions) AddSessionToken(site string, sessiontoken string) (map[str
 // Removes the session token from the given site.
 func (h HttpSessions) RemoveSessionToken(site string, sessiontoken string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site":         site,
+		"site": site,
 		"sessionToken": sessiontoken,
 	}
 	return h.c.Request("httpSessions/action/removeSessionToken/", m)
@@ -111,10 +116,10 @@ func (h HttpSessions) RemoveSessionToken(site string, sessiontoken string) (map[
 // Sets the value of the session token of the given session for the given site.
 func (h HttpSessions) SetSessionTokenValue(site string, session string, sessiontoken string, tokenvalue string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site":         site,
-		"session":      session,
+		"site": site,
+		"session": session,
 		"sessionToken": sessiontoken,
-		"tokenValue":   tokenvalue,
+		"tokenValue": tokenvalue,
 	}
 	return h.c.Request("httpSessions/action/setSessionTokenValue/", m)
 }
@@ -122,9 +127,36 @@ func (h HttpSessions) SetSessionTokenValue(site string, session string, sessiont
 // Renames the session of the given site.
 func (h HttpSessions) RenameSession(site string, oldsessionname string, newsessionname string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site":           site,
+		"site": site,
 		"oldSessionName": oldsessionname,
 		"newSessionName": newsessionname,
 	}
 	return h.c.Request("httpSessions/action/renameSession/", m)
 }
+
+// Adds a default session token with the given name and enabled state.
+func (h HttpSessions) AddDefaultSessionToken(sessiontoken string, tokenenabled string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"sessionToken": sessiontoken,
+		"tokenEnabled": tokenenabled,
+	}
+	return h.c.Request("httpSessions/action/addDefaultSessionToken/", m)
+}
+
+// Sets whether or not the default session token with the given name is enabled.
+func (h HttpSessions) SetDefaultSessionTokenEnabled(sessiontoken string, tokenenabled string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"sessionToken": sessiontoken,
+		"tokenEnabled": tokenenabled,
+	}
+	return h.c.Request("httpSessions/action/setDefaultSessionTokenEnabled/", m)
+}
+
+// Removes the default session token with the given name.
+func (h HttpSessions) RemoveDefaultSessionToken(sessiontoken string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"sessionToken": sessiontoken,
+	}
+	return h.c.Request("httpSessions/action/removeDefaultSessionToken/", m)
+}
+
