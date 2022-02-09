@@ -27,6 +27,13 @@ type AjaxSpider struct {
 	c *Client
 }
 
+// Gets the allowed resources. The allowed resources are always fetched even if out of scope, allowing to include necessary resources (e.g. scripts) from 3rd-parties.
+//
+// This component is optional and therefore the API will only work if it is installed
+func (a AjaxSpider) AllowedResources() (map[string]interface{}, error) {
+	return a.c.Request("ajaxSpider/view/allowedResources/", nil)
+}
+
 // Gets the current status of the crawler. Actual values are Stopped and Running.
 //
 // This component is optional and therefore the API will only work if it is installed
@@ -134,8 +141,8 @@ func (a AjaxSpider) OptionRandomInputs() (map[string]interface{}, error) {
 // This component is optional and therefore the API will only work if it is installed
 func (a AjaxSpider) Scan(url string, inscope string, contextname string, subtreeonly string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"url":         url,
-		"inScope":     inscope,
+		"url": url,
+		"inScope": inscope,
 		"contextName": contextname,
 		"subtreeOnly": subtreeonly,
 	}
@@ -148,8 +155,8 @@ func (a AjaxSpider) Scan(url string, inscope string, contextname string, subtree
 func (a AjaxSpider) ScanAsUser(contextname string, username string, url string, subtreeonly string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextName": contextname,
-		"userName":    username,
-		"url":         url,
+		"userName": username,
+		"url": url,
 		"subtreeOnly": subtreeonly,
 	}
 	return a.c.Request("ajaxSpider/action/scanAsUser/", m)
@@ -160,6 +167,38 @@ func (a AjaxSpider) ScanAsUser(contextname string, username string, url string, 
 // This component is optional and therefore the API will only work if it is installed
 func (a AjaxSpider) Stop() (map[string]interface{}, error) {
 	return a.c.Request("ajaxSpider/action/stop/", nil)
+}
+
+// Adds an allowed resource.
+//
+// This component is optional and therefore the API will only work if it is installed
+func (a AjaxSpider) AddAllowedResource(regex string, enabled string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"regex": regex,
+		"enabled": enabled,
+	}
+	return a.c.Request("ajaxSpider/action/addAllowedResource/", m)
+}
+
+// Removes an allowed resource.
+//
+// This component is optional and therefore the API will only work if it is installed
+func (a AjaxSpider) RemoveAllowedResource(regex string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"regex": regex,
+	}
+	return a.c.Request("ajaxSpider/action/removeAllowedResource/", m)
+}
+
+// Sets whether or not an allowed resource is enabled.
+//
+// This component is optional and therefore the API will only work if it is installed
+func (a AjaxSpider) SetEnabledAllowedResource(regex string, enabled string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"regex": regex,
+		"enabled": enabled,
+	}
+	return a.c.Request("ajaxSpider/action/setEnabledAllowedResource/", m)
 }
 
 // Sets the configuration of the AJAX Spider to use one of the supported browsers.
@@ -261,3 +300,4 @@ func (a AjaxSpider) SetOptionReloadWait(i int) (map[string]interface{}, error) {
 	}
 	return a.c.Request("ajaxSpider/action/setOptionReloadWait/", m)
 }
+

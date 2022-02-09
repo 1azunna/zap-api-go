@@ -42,23 +42,23 @@ func (a AlertFilter) GlobalAlertFilterList() (map[string]interface{}, error) {
 	return a.c.Request("alertFilter/view/globalAlertFilterList/", nil)
 }
 
-// Adds a new alert filter for the context with the given ID.
+// Adds a new alert filter for the context with the given ID. 
 //
 // This component is optional and therefore the API will only work if it is installed
 func (a AlertFilter) AddAlertFilter(contextid string, ruleid string, newlevel string, url string, urlisregex string, parameter string, enabled string, parameterisregex string, attack string, attackisregex string, evidence string, evidenceisregex string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextId":        contextid,
-		"ruleId":           ruleid,
-		"newLevel":         newlevel,
-		"url":              url,
-		"urlIsRegex":       urlisregex,
-		"parameter":        parameter,
-		"enabled":          enabled,
+		"contextId": contextid,
+		"ruleId": ruleid,
+		"newLevel": newlevel,
+		"url": url,
+		"urlIsRegex": urlisregex,
+		"parameter": parameter,
+		"enabled": enabled,
 		"parameterIsRegex": parameterisregex,
-		"attack":           attack,
-		"attackIsRegex":    attackisregex,
-		"evidence":         evidence,
-		"evidenceIsRegex":  evidenceisregex,
+		"attack": attack,
+		"attackIsRegex": attackisregex,
+		"evidence": evidence,
+		"evidenceIsRegex": evidenceisregex,
 	}
 	return a.c.Request("alertFilter/action/addAlertFilter/", m)
 }
@@ -68,38 +68,38 @@ func (a AlertFilter) AddAlertFilter(contextid string, ruleid string, newlevel st
 // This component is optional and therefore the API will only work if it is installed
 func (a AlertFilter) RemoveAlertFilter(contextid string, ruleid string, newlevel string, url string, urlisregex string, parameter string, enabled string, parameterisregex string, attack string, attackisregex string, evidence string, evidenceisregex string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextId":        contextid,
-		"ruleId":           ruleid,
-		"newLevel":         newlevel,
-		"url":              url,
-		"urlIsRegex":       urlisregex,
-		"parameter":        parameter,
-		"enabled":          enabled,
+		"contextId": contextid,
+		"ruleId": ruleid,
+		"newLevel": newlevel,
+		"url": url,
+		"urlIsRegex": urlisregex,
+		"parameter": parameter,
+		"enabled": enabled,
 		"parameterIsRegex": parameterisregex,
-		"attack":           attack,
-		"attackIsRegex":    attackisregex,
-		"evidence":         evidence,
-		"evidenceIsRegex":  evidenceisregex,
+		"attack": attack,
+		"attackIsRegex": attackisregex,
+		"evidence": evidence,
+		"evidenceIsRegex": evidenceisregex,
 	}
 	return a.c.Request("alertFilter/action/removeAlertFilter/", m)
 }
 
-// Adds a new global alert filter.
+// Adds a new global alert filter. 
 //
 // This component is optional and therefore the API will only work if it is installed
 func (a AlertFilter) AddGlobalAlertFilter(ruleid string, newlevel string, url string, urlisregex string, parameter string, enabled string, parameterisregex string, attack string, attackisregex string, evidence string, evidenceisregex string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"ruleId":           ruleid,
-		"newLevel":         newlevel,
-		"url":              url,
-		"urlIsRegex":       urlisregex,
-		"parameter":        parameter,
-		"enabled":          enabled,
+		"ruleId": ruleid,
+		"newLevel": newlevel,
+		"url": url,
+		"urlIsRegex": urlisregex,
+		"parameter": parameter,
+		"enabled": enabled,
 		"parameterIsRegex": parameterisregex,
-		"attack":           attack,
-		"attackIsRegex":    attackisregex,
-		"evidence":         evidence,
-		"evidenceIsRegex":  evidenceisregex,
+		"attack": attack,
+		"attackIsRegex": attackisregex,
+		"evidence": evidence,
+		"evidenceIsRegex": evidenceisregex,
 	}
 	return a.c.Request("alertFilter/action/addGlobalAlertFilter/", m)
 }
@@ -109,54 +109,60 @@ func (a AlertFilter) AddGlobalAlertFilter(ruleid string, newlevel string, url st
 // This component is optional and therefore the API will only work if it is installed
 func (a AlertFilter) RemoveGlobalAlertFilter(ruleid string, newlevel string, url string, urlisregex string, parameter string, enabled string, parameterisregex string, attack string, attackisregex string, evidence string, evidenceisregex string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"ruleId":           ruleid,
-		"newLevel":         newlevel,
-		"url":              url,
-		"urlIsRegex":       urlisregex,
-		"parameter":        parameter,
-		"enabled":          enabled,
+		"ruleId": ruleid,
+		"newLevel": newlevel,
+		"url": url,
+		"urlIsRegex": urlisregex,
+		"parameter": parameter,
+		"enabled": enabled,
 		"parameterIsRegex": parameterisregex,
-		"attack":           attack,
-		"attackIsRegex":    attackisregex,
-		"evidence":         evidence,
-		"evidenceIsRegex":  evidenceisregex,
+		"attack": attack,
+		"attackIsRegex": attackisregex,
+		"evidence": evidence,
+		"evidenceIsRegex": evidenceisregex,
 	}
 	return a.c.Request("alertFilter/action/removeGlobalAlertFilter/", m)
 }
 
 // Applies all currently enabled Global and Context alert filters.
+//
 // This component is optional and therefore the API will only work if it is installed
-
 func (a AlertFilter) ApplyAll() (map[string]interface{}, error) {
 	return a.c.Request("alertFilter/action/applyAll/", nil)
 }
 
 // Applies all currently enabled Context alert filters.
+//
 // This component is optional and therefore the API will only work if it is installed
 func (a AlertFilter) ApplyContext() (map[string]interface{}, error) {
 	return a.c.Request("alertFilter/action/applyContext/", nil)
 }
 
 // Applies all currently enabled Global alert filters.
+//
 // This component is optional and therefore the API will only work if it is installed
 func (a AlertFilter) ApplyGlobal() (map[string]interface{}, error) {
 	return a.c.Request("alertFilter/action/applyGlobal/", nil)
 }
 
 // Tests all currently enabled Global and Context alert filters.
+//
 // This component is optional and therefore the API will only work if it is installed
 func (a AlertFilter) TestAll() (map[string]interface{}, error) {
 	return a.c.Request("alertFilter/action/testAll/", nil)
 }
 
 // Tests all currently enabled Context alert filters.
+//
 // This component is optional and therefore the API will only work if it is installed
 func (a AlertFilter) TestContext() (map[string]interface{}, error) {
 	return a.c.Request("alertFilter/action/testContext/", nil)
 }
 
 // Tests all currently enabled Global alert filters.
+//
 // This component is optional and therefore the API will only work if it is installed
 func (a AlertFilter) TestGlobal() (map[string]interface{}, error) {
 	return a.c.Request("alertFilter/action/testGlobal/", nil)
 }
+

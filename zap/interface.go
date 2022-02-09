@@ -40,12 +40,14 @@ type Interface interface {
 	ImportLogFiles() *ImportLogFiles
 	Importurls() *Importurls
 	LocalProxies() *LocalProxies
+	Network() *Network
 	Openapi() *Openapi
 	Params() *Params
 	Pnh() *Pnh
 	Pscan() *Pscan
 	Replacer() *Replacer
 	Reports() *Reports
+	Retest() *Retest
 	Reveal() *Reveal
 	Revisit() *Revisit
 	RuleConfig() *RuleConfig
@@ -155,6 +157,11 @@ func (c *Client) LocalProxies() *LocalProxies {
 	return &LocalProxies{c}
 }
 
+// Network() returns a Network client
+func (c *Client) Network() *Network {
+	return &Network{c}
+}
+
 // Openapi() returns a Openapi clinet
 func (c *Client) Openapi() *Openapi {
 	return &Openapi{c}
@@ -183,6 +190,11 @@ func (c *Client) Replacer() *Replacer {
 // Reports() returns a Reports client
 func (c *Client) Reports() *Reports {
 	return &Reports{c}
+}
+
+// Retest() returns a Retest client
+func (c *Client) Retest() *Retest {
+	return &Retest{c}
 }
 
 // Reveal() returns a Reveal client

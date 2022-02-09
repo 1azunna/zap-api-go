@@ -493,6 +493,14 @@ func (c Core) SetOptionProxyChainRealm(str string) (map[string]interface{}, erro
 	return c.c.Request("core/action/setOptionProxyChainRealm/", m)
 }
 
+// Use actions [add|modify|remove]ProxyChainExcludedDomain instead.
+func (c Core) SetOptionProxyChainSkipName(str string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"String": str,
+	}
+	return c.c.Request("core/action/setOptionProxyChainSkipName/", m)
+}
+
 // 
 func (c Core) SetOptionProxyChainUserName(str string) (map[string]interface{}, error) {
 	m := map[string]string{
