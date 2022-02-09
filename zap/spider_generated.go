@@ -125,6 +125,16 @@ func (s Spider) OptionRequestWaitTime() (map[string]interface{}, error) {
 }
 
 // 
+func (s Spider) OptionScope() (map[string]interface{}, error) {
+	return s.c.Request("spider/view/optionScope/", nil)
+}
+
+// 
+func (s Spider) OptionScopeText() (map[string]interface{}, error) {
+	return s.c.Request("spider/view/optionScopeText/", nil)
+}
+
+// 
 func (s Spider) OptionSkipURLString() (map[string]interface{}, error) {
 	return s.c.Request("spider/view/optionSkipURLString/", nil)
 }
@@ -329,6 +339,14 @@ func (s Spider) SetOptionHandleParameters(str string) (map[string]interface{}, e
 		"String": str,
 	}
 	return s.c.Request("spider/action/setOptionHandleParameters/", m)
+}
+
+// Use actions [add|modify|remove]DomainAlwaysInScope instead.
+func (s Spider) SetOptionScopeString(str string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"String": str,
+	}
+	return s.c.Request("spider/action/setOptionScopeString/", m)
 }
 
 // 

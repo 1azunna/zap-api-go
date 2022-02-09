@@ -21,31 +21,28 @@
 
 package zap
 
-type Wappalyzer struct {
+type Automation struct {
 	c *Client
 }
 
-// Lists all the sites recognized by the wappalyzer addon.
-//
 // This component is optional and therefore the API will only work if it is installed
-func (w Wappalyzer) ListSites() (map[string]interface{}, error) {
-	return w.c.Request("wappalyzer/view/listSites/", nil)
-}
-
-// Lists all sites and their associated applications (technologies).
-//
-// This component is optional and therefore the API will only work if it is installed
-func (w Wappalyzer) ListAll() (map[string]interface{}, error) {
-	return w.c.Request("wappalyzer/view/listAll/", nil)
-}
-
-// Lists all the applications (technologies) associated with a specific site.
-//
-// This component is optional and therefore the API will only work if it is installed
-func (w Wappalyzer) ListSite(site string) (map[string]interface{}, error) {
+func (a Automation) PlanProgress(planid string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site": site,
+		"planId": planid,
 	}
-	return w.c.Request("wappalyzer/view/listSite/", m)
+	return a.c.Request("automation/view/planProgress/", m)
+}
+
+// This component is optional and therefore the API will only work if it is installed
+func (a Automation) RunPlan(filepath string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"filePath": filepath,
+	}
+	return a.c.Request("automation/action/runPlan/", m)
+}
+
+// This component is optional and therefore the API will only work if it is installed
+func (a Automation) EndDelayJob() (map[string]interface{}, error) {
+	return a.c.Request("automation/action/endDelayJob/", nil)
 }
 

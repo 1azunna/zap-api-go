@@ -21,31 +21,15 @@
 
 package zap
 
-type Wappalyzer struct {
+type Retest struct {
 	c *Client
 }
 
-// Lists all the sites recognized by the wappalyzer addon.
-//
 // This component is optional and therefore the API will only work if it is installed
-func (w Wappalyzer) ListSites() (map[string]interface{}, error) {
-	return w.c.Request("wappalyzer/view/listSites/", nil)
-}
-
-// Lists all sites and their associated applications (technologies).
-//
-// This component is optional and therefore the API will only work if it is installed
-func (w Wappalyzer) ListAll() (map[string]interface{}, error) {
-	return w.c.Request("wappalyzer/view/listAll/", nil)
-}
-
-// Lists all the applications (technologies) associated with a specific site.
-//
-// This component is optional and therefore the API will only work if it is installed
-func (w Wappalyzer) ListSite(site string) (map[string]interface{}, error) {
+func (r Retest) Retest(alertids string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"site": site,
+		"alertIds": alertids,
 	}
-	return w.c.Request("wappalyzer/view/listSite/", m)
+	return r.c.Request("retest/action/retest/", m)
 }
 
