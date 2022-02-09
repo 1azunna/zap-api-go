@@ -32,3 +32,4 @@ func (p Params) Params(site string) (map[string]interface{}, error) {
 	}
 	return p.c.Request("params/view/params/", m)
 }
+

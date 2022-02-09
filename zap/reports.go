@@ -1,6 +1,23 @@
-package zap
+// Zed Attack Proxy (ZAP) and its related class files.
+//
+// ZAP is an HTTP/HTTPS proxy for assessing web application security.
+//
+// Copyright 2017 the ZAP development team
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
 
-import "strings"
+package zap
 
 type Reports struct {
 	c *Client
@@ -20,18 +37,17 @@ func (r Reports) TemplateDetails(template string) (map[string]interface{}, error
 }
 
 // This component is optional and therefore the API will only work if it is installed
-func (r Reports) Generate(title string, template string, theme string, description string, contexts []string,
-	sites []string, sections []string, includedconfidences []string, includedrisks []string, reportfilename string, reportfilenamepattern string, reportdir string, display string) (map[string]interface{}, error) {
+func (r Reports) Generate(title string, template string, theme string, description string, contexts string, sites string, sections string, includedconfidences string, includedrisks string, reportfilename string, reportfilenamepattern string, reportdir string, display string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"title":                 title,
 		"template":              template,
 		"theme":                 theme,
 		"description":           description,
-		"contexts":              strings.Join(contexts, ","),
-		"sites":                 strings.Join(sites, ","),
-		"sections":              strings.Join(sections, ","),
-		"includedConfidences":   strings.Join(includedconfidences, ","),
-		"includedRisks":         strings.Join(includedrisks, ","),
+		"contexts":              contexts,
+		"sites":                 sites,
+		"sections":              sections,
+		"includedConfidences":   includedconfidences,
+		"includedRisks":         includedrisks,
 		"reportFileName":        reportfilename,
 		"reportFileNamePattern": reportfilenamepattern,
 		"reprortDir":            reportdir,
