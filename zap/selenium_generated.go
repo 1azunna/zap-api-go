@@ -123,4 +123,3 @@ func (s Selenium) SetOptionPhantomJsBinaryPath(str string) (map[string]interface
 	}
 	return s.c.Request("selenium/action/setOptionPhantomJsBinaryPath/", m)
 }
-

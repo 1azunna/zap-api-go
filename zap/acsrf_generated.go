@@ -68,4 +68,3 @@ func (a Acsrf) GenForm(hrefid string) ([]byte, error) {
 	}
 	return a.c.RequestOther("acsrf/other/genForm/", m)
 }
-
