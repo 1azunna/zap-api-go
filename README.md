@@ -42,6 +42,6 @@ git pull upstream main
 cd ..
 ```
 
-The above commands will update the files in `src/zapv2`.
+The above commands will update the files in `zap-api-go/zap`.
 
-If any new files are created then they should be manually added to `src/zapv2/__init__.py` as per the existing files.
+If any new files are created then they should be manually added to `zap-api-go/zap/interface.go` as per the existing files.
