@@ -75,11 +75,19 @@ func (c Context) ExcludedTechnologyList(contextname string) (map[string]interfac
 	return c.c.Request("context/view/excludedTechnologyList/", m)
 }
 
+// Lists the URLs accessed through/by ZAP, that belong to the context with the given name.
+func (c Context) Urls(contextname string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"contextName": contextname,
+	}
+	return c.c.Request("context/view/urls/", m)
+}
+
 // Add exclude regex to context
 func (c Context) ExcludeFromContext(contextname string, regex string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextName": contextname,
-		"regex":       regex,
+		"regex": regex,
 	}
 	return c.c.Request("context/action/excludeFromContext/", m)
 }
@@ -88,9 +96,33 @@ func (c Context) ExcludeFromContext(contextname string, regex string) (map[strin
 func (c Context) IncludeInContext(contextname string, regex string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"contextName": contextname,
-		"regex":       regex,
+		"regex": regex,
 	}
 	return c.c.Request("context/action/includeInContext/", m)
+}
+
+// Set the regexs to include and exclude for a context, both supplied as JSON string arrays
+func (c Context) SetContextRegexs(contextname string, incregexs string, excregexs string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"contextName": contextname,
+		"incRegexs": incregexs,
+		"excRegexs": excregexs,
+	}
+	return c.c.Request("context/action/setContextRegexs/", m)
+}
+
+// Set the checking strategy for a context - this defines how ZAP checks that a request is authenticated
+func (c Context) SetContextCheckingStrategy(contextname string, checkingstrategy string, pollurl string, polldata string, pollheaders string, pollfrequency string, pollfrequencyunits string) (map[string]interface{}, error) {
+	m := map[string]string{
+		"contextName": contextname,
+		"checkingStrategy": checkingstrategy,
+		"pollUrl": pollurl,
+		"pollData": polldata,
+		"pollHeaders": pollheaders,
+		"pollFrequency": pollfrequency,
+		"pollFrequencyUnits": pollfrequencyunits,
+	}
+	return c.c.Request("context/action/setContextCheckingStrategy/", m)
 }
 
 // Creates a new context with the given name in the current session
@@ -129,7 +161,7 @@ func (c Context) ImportContext(contextfile string) (map[string]interface{}, erro
 // Includes technologies with the given names, separated by a comma, to a context
 func (c Context) IncludeContextTechnologies(contextname string, technologynames string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextName":     contextname,
+		"contextName": contextname,
 		"technologyNames": technologynames,
 	}
 	return c.c.Request("context/action/includeContextTechnologies/", m)
@@ -146,7 +178,7 @@ func (c Context) IncludeAllContextTechnologies(contextname string) (map[string]i
 // Excludes technologies with the given names, separated by a comma, from a context
 func (c Context) ExcludeContextTechnologies(contextname string, technologynames string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextName":     contextname,
+		"contextName": contextname,
 		"technologyNames": technologynames,
 	}
 	return c.c.Request("context/action/excludeContextTechnologies/", m)
@@ -163,8 +195,9 @@ func (c Context) ExcludeAllContextTechnologies(contextname string) (map[string]i
 // Sets a context to in scope (contexts are in scope by default)
 func (c Context) SetContextInScope(contextname string, booleaninscope string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"contextName":    contextname,
+		"contextName": contextname,
 		"booleanInScope": booleaninscope,
 	}
 	return c.c.Request("context/action/setContextInScope/", m)
 }
+
