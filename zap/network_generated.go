@@ -102,7 +102,7 @@ func (n Network) SetServerCertValidity(validity string) (map[string]interface{},
 // This component is optional and therefore the API will only work if it is installed
 func (n Network) AddAlias(name string, enabled string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"name":    name,
+		"name": name,
 		"enabled": enabled,
 	}
 	return n.c.Request("network/action/addAlias/", m)
@@ -113,12 +113,12 @@ func (n Network) AddAlias(name string, enabled string) (map[string]interface{}, 
 // This component is optional and therefore the API will only work if it is installed
 func (n Network) AddLocalServer(address string, port string, api string, proxy string, behindnat string, decoderesponse string, removeacceptencoding string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"address":              address,
-		"port":                 port,
-		"api":                  api,
-		"proxy":                proxy,
-		"behindNat":            behindnat,
-		"decodeResponse":       decoderesponse,
+		"address": address,
+		"port": port,
+		"api": api,
+		"proxy": proxy,
+		"behindNat": behindnat,
+		"decodeResponse": decoderesponse,
 		"removeAcceptEncoding": removeacceptencoding,
 	}
 	return n.c.Request("network/action/addLocalServer/", m)
@@ -130,7 +130,7 @@ func (n Network) AddLocalServer(address string, port string, api string, proxy s
 func (n Network) AddPassThrough(authority string, enabled string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"authority": authority,
-		"enabled":   enabled,
+		"enabled": enabled,
 	}
 	return n.c.Request("network/action/addPassThrough/", m)
 }
@@ -151,7 +151,7 @@ func (n Network) RemoveAlias(name string) (map[string]interface{}, error) {
 func (n Network) RemoveLocalServer(address string, port string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"address": address,
-		"port":    port,
+		"port": port,
 	}
 	return n.c.Request("network/action/removeLocalServer/", m)
 }
@@ -171,7 +171,7 @@ func (n Network) RemovePassThrough(authority string) (map[string]interface{}, er
 // This component is optional and therefore the API will only work if it is installed
 func (n Network) SetAliasEnabled(name string, enabled string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"name":    name,
+		"name": name,
 		"enabled": enabled,
 	}
 	return n.c.Request("network/action/setAliasEnabled/", m)
@@ -183,7 +183,7 @@ func (n Network) SetAliasEnabled(name string, enabled string) (map[string]interf
 func (n Network) SetPassThroughEnabled(authority string, enabled string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"authority": authority,
-		"enabled":   enabled,
+		"enabled": enabled,
 	}
 	return n.c.Request("network/action/setPassThroughEnabled/", m)
 }
@@ -194,3 +194,4 @@ func (n Network) SetPassThroughEnabled(authority string, enabled string) (map[st
 func (n Network) RootCaCert() ([]byte, error) {
 	return n.c.RequestOther("network/other/rootCaCert/", nil)
 }
+

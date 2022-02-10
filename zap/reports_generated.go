@@ -47,19 +47,20 @@ func (r Reports) TemplateDetails(template string) (map[string]interface{}, error
 // This component is optional and therefore the API will only work if it is installed
 func (r Reports) Generate(title string, template string, theme string, description string, contexts string, sites string, sections string, includedconfidences string, includedrisks string, reportfilename string, reportfilenamepattern string, reportdir string, display string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"title":                 title,
-		"template":              template,
-		"theme":                 theme,
-		"description":           description,
-		"contexts":              contexts,
-		"sites":                 sites,
-		"sections":              sections,
-		"includedConfidences":   includedconfidences,
-		"includedRisks":         includedrisks,
-		"reportFileName":        reportfilename,
+		"title": title,
+		"template": template,
+		"theme": theme,
+		"description": description,
+		"contexts": contexts,
+		"sites": sites,
+		"sections": sections,
+		"includedConfidences": includedconfidences,
+		"includedRisks": includedrisks,
+		"reportFileName": reportfilename,
 		"reportFileNamePattern": reportfilenamepattern,
-		"reportDir":             reportdir,
-		"display":               display,
+		"reportDir": reportdir,
+		"display": display,
 	}
 	return r.c.Request("reports/action/generate/", m)
 }
+

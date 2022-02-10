@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2017 the ZAP development team
+// Copyright 2022 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -33,10 +33,10 @@ func (l LocalProxies) AdditionalProxies() (map[string]interface{}, error) {
 // Adds an new proxy using the details supplied.
 func (l LocalProxies) AddAdditionalProxy(address string, port string, behindnat string, alwaysdecodezip string, removeunsupportedencodings string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"address":                    address,
-		"port":                       port,
-		"behindNat":                  behindnat,
-		"alwaysDecodeZip":            alwaysdecodezip,
+		"address": address,
+		"port": port,
+		"behindNat": behindnat,
+		"alwaysDecodeZip": alwaysdecodezip,
 		"removeUnsupportedEncodings": removeunsupportedencodings,
 	}
 	return l.c.Request("localProxies/action/addAdditionalProxy/", m)
@@ -46,7 +46,8 @@ func (l LocalProxies) AddAdditionalProxy(address string, port string, behindnat 
 func (l LocalProxies) RemoveAdditionalProxy(address string, port string) (map[string]interface{}, error) {
 	m := map[string]string{
 		"address": address,
-		"port":    port,
+		"port": port,
 	}
 	return l.c.Request("localProxies/action/removeAdditionalProxy/", m)
 }
+

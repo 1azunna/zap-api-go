@@ -2,7 +2,7 @@
 //
 // ZAP is an HTTP/HTTPS proxy for assessing web application security.
 //
-// Copyright 2017 the ZAP development team
+// Copyright 2022 the ZAP development team
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -36,6 +36,7 @@ type Interface interface {
 	Core() *Core
 	Exportreport() *Exportreport
 	ForcedUser() *ForcedUser
+	Graphql() *Graphql
 	HttpSessions() *HttpSessions
 	ImportLogFiles() *ImportLogFiles
 	Importurls() *Importurls
@@ -135,6 +136,11 @@ func (c *Client) Exportreport() *Exportreport {
 // ForcedUser() returns a ForcedUser client
 func (c *Client) ForcedUser() *ForcedUser {
 	return &ForcedUser{c}
+}
+
+// Graphql() returns a Graphql client
+func (c *Client) Graphql() *Graphql {
+	return &Graphql{c}
 }
 
 // HttpSessions() returns a HttpSessions client
