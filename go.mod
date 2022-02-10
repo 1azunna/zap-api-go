@@ -1,3 +1,3 @@
-module github.com/zaproxy/zap-api-go
+module github.com/1azunna/zap-api-go
 
 go 1.17
