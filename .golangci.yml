@@ -5,6 +5,7 @@ linters:
     - dogsled
     - goimports
     - gosec
+    - gofmt
     - gosimple
     - govet
     - ineffassign
@@ -42,8 +43,3 @@ issues:
 
   exclude:
     - parameter .* always receives
-
-  # exclude-rules:
-  #   - text: "G107: Potential HTTP request made with variable url"
-  #     linters:
-  #       - gosec
