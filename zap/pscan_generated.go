@@ -95,7 +95,7 @@ func (p Pscan) DisableScanners(ids string) (map[string]interface{}, error) {
 // Sets the alert threshold of the passive scanner with the given ID, accepted values for alert threshold: OFF, DEFAULT, LOW, MEDIUM and HIGH
 func (p Pscan) SetScannerAlertThreshold(id string, alertthreshold string) (map[string]interface{}, error) {
 	m := map[string]string{
-		"id": id,
+		"id":             id,
 		"alertThreshold": alertthreshold,
 	}
 	return p.c.Request("pscan/action/setScannerAlertThreshold/", m)
@@ -118,4 +118,3 @@ func (p Pscan) DisableAllTags() (map[string]interface{}, error) {
 func (p Pscan) EnableAllTags() (map[string]interface{}, error) {
 	return p.c.Request("pscan/action/enableAllTags/", nil)
 }
-
